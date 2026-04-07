@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enroll – StringsAcademy</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!--
+    We reuse style.css from index.html.
+    Both pages share the same colors, fonts, and button styles.
+    This is the benefit of having a separate CSS file.
+  -->
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /*
+      Enroll-page specific styles.
+      Only apply on this page, not on index.html.
+    */
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+    }
+
+    /* Top back link */
+    .back-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-bottom: 2rem;
+      transition: color 0.2s;
+    }
+
+    .back-home:hover {
+      color: var(--gold);
+    }
+
+    /* Enrollment card */
+    .enroll-card {
+      background: var(--dark-2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.8rem;
+      width: 100%;
+      max-width: 520px;
+    }
+
+    .enroll-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .enroll-logo {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .enroll-logo span {
+      color: var(--gold);
+    }
+
+    .enroll-subtitle {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* Divider line */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 1.5rem 0;
+    }
+
+    /* Form styles — reuse .form-group from style.css */
+    .enroll-form .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .enroll-form label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .enroll-form input,
+    .enroll-form select {
+      background: var(--dark);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+
+    /* select dropdown: needs appearance reset for custom styling */
+    .enroll-form select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%239e8c72' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      cursor: pointer;
+    }
+
+    .enroll-form input:focus,
+    .enroll-form select:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    .enroll-form input::placeholder {
+      color: #4a3520;
+    }
+
+    /* select: style option background */
+    .enroll-form select option {
+      background: var(--dark-2);
+      color: var(--text);
+    }
+
+    .enroll-form .btn-primary {
+      width: 100%;
+      text-align: center;
+      padding: 0.95rem;
+      font-size: 1rem;
+    }
+
+    /* Two-column row for name + phone */
+    .form-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 480px) {
+      .form-2col {
+        grid-template-columns: 1fr;
+      }
+
+      .enroll-card {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!--
+    Back to Home link.
+    href="index.html" → redirects BACK to the main page.
+    This is the reverse of the redirect from index.html → enroll.html.
+  -->
+  <a href="index.html" class="back-home">← Back to Home</a>
+
+  <div class="enroll-card">
+
+    <div class="enroll-header">
+      <p class="enroll-logo">Strings<span>Academy</span></p>
+      <p class="enroll-subtitle">Fill the form below to reserve your seat</p>
+    </div>
+
+    <hr class="divider" />
+
+    <!--
+      ENROLLMENT FORM
+      ---------------
+      This is a detailed form with:
+      - text inputs (name)
+      - tel input (phone)
+      - email input
+      - select dropdown (course selection)
+      - radio buttons (batch preference)
+      All have required attribute, so browser validates before submit.
+    -->
+    <form class="enroll-form" onsubmit="handleEnroll(event)">
+
+      <!-- Row 1: Name + Phone -->
+      <div class="form-2col">
+
+        <div class="form-group">
+          <label for="e-name">Full Name</label>
+          <input
+            type="text"
+            id="e-name"
+            placeholder="Your name"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="e-phone">Phone Number</label>
+          <input
+            type="tel"
+            id="e-phone"
+            placeholder="+91 00000 00000"
+            required
+          />
+        </div>
+
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="e-email">Email Address</label>
+        <input
+          type="email"
+          id="e-email"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <!-- Age -->
+      <div class="form-group">
+        <label for="e-age">Your Age</label>
+        <input
+          type="number"
+          id="e-age"
+          placeholder="e.g. 20"
+          min="6"
+          max="70"
+          required
+        />
+      </div>
+
+      <!--
+        SELECT DROPDOWN
+        ---------------
+        <select> creates a dropdown menu.
+        Each <option> is one choice.
+        value="" is a placeholder (disabled + selected by default).
+      -->
+      <div class="form-group">
+        <label for="e-course">Select Program</label>
+        <select id="e-course" required>
+          <option value="" disabled selected>Choose a program...</option>
+          <option value="beginner">Beginner Guitar Classes</option>
+          <option value="advanced">Advanced & Lead Guitar</option>
+          <option value="online">Online Live Sessions</option>
+          <option value="oneone">One-on-One Coaching</option>
+        </select>
+      </div>
+
+      <!-- Submit button -->
+      <button type="submit" class="btn btn-primary">
+        Submit Enrollment →
+      </button>
+
+      <!-- Hidden success message -->
+      <p id="enroll-success" class="success-msg" style="display:none;">
+        🎸 Enrollment received! We'll call you within 24 hours to confirm your seat.
+      </p>
+
+    </form>
+
+  </div>
+
+  <script>
+    function handleEnroll(e) {
+      e.preventDefault();
+      document.getElementById('enroll-success').style.display = 'block';
+      e.target.reset();
+
+      /*
+        In a real Node.js project, you would send this data to your server:
+        fetch('/api/enroll', {
+          method: 'POST',
+          body: JSON.stringify({ name, phone, email, course })
+        })
+      */
+    }
+  </script>
+
+</body>
+</html>

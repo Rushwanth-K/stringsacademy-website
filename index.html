@@ -339,8 +339,8 @@
       <!--
         Right: Contact form
       -->
-      <form class="contact-form" onsubmit="handleContact(event)">
-
+     <form class="contact-form" action="https://formspree.io/f/xykbvwzq" method="POST">
+        <input type="hidden" name="_subject" value="New StringsAcademy Contact" />
         <!--
           Two inputs side by side using CSS Grid.
           type="text" for name, type="tel" for phone number.
@@ -354,19 +354,20 @@
               When you click the label, the input gets focused.
             -->
             <label for="c-name">Full Name</label>
-            <input type="text" id="c-name" placeholder="Your full name" required />
+            <input type="text" name="name" id="c-name" placeholder="Your full name" required />
           </div>
 
           <div class="form-group">
             <label for="c-phone">Phone Number</label>
-            <input type="tel" id="c-phone" pattern="[0-9]{10}" placeholder="Enter 10-digit number" required />
+            <input type="tel" name="phone" id="c-phone" pattern="[0-9]{10}" placeholder="Enter 10-digit number"
+              required />
           </div>
 
         </div>
 
         <div class="form-group">
           <label for="c-email">Email Address</label>
-          <input type="email" id="c-email" placeholder="you@example.com" required />
+          <input type="email" name="email" id="c-email" placeholder="you@example.com" required />
         </div>
 
         <div class="form-group">
@@ -376,8 +377,8 @@
             rows="5" sets the default height
             resize: vertical in CSS lets user resize only vertically
           -->
-          <textarea id="c-message" rows="5" placeholder="Ask about batch timings, fees, or anything else..."
-            required></textarea>
+          <textarea name="message" id="c-message" rows="5"
+            placeholder="Ask about batch timings, fees, or anything else..." required></textarea>
         </div>
 
         <button type="submit" class="btn btn-primary">Send Message →</button>
@@ -463,21 +464,6 @@
         navbar.classList.remove('scrolled');
       }
     });
-
-
-    /*
-      CONTACT FORM SUBMIT
-      -------------------
-      e.preventDefault() → stops the page from reloading.
-      We show a success message and clear the form.
-      In a real project, you'd send this data to a Node.js server.
-    */
-    function handleContact(e) {
-      e.preventDefault();
-      document.getElementById('contact-success').style.display = 'block';
-      e.target.reset();
-    }
-
   </script>
 
 </body>

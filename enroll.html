@@ -188,29 +188,20 @@
       - radio buttons (batch preference)
       All have required attribute, so browser validates before submit.
     -->
-    <form class="enroll-form" onsubmit="handleEnroll(event)">
-
+  <form class="enroll-form" action="https://formspree.io/f/xykbvwzq" method="POST">
+      <input type="hidden" name="_subject" value="New Form Submission - StringsAcademy" />
+      <input type="hidden" name="formName" value="Enroll Form" />
       <!-- Row 1: Name + Phone -->
       <div class="form-2col">
 
         <div class="form-group">
           <label for="e-name">Full Name</label>
-          <input
-            type="text"
-            id="e-name"
-            placeholder="Your name"
-            required
-          />
+          <input type="text" id="e-name" name="name" placeholder="Your name" required />
         </div>
 
         <div class="form-group">
           <label for="e-phone">Phone Number</label>
-          <input
-            type="tel"
-            id="e-phone"
-            placeholder="+91 00000 00000"
-            required
-          />
+          <input type="tel" id="e-phone" name="phone" placeholder="+91 00000 00000" required />
         </div>
 
       </div>
@@ -218,25 +209,13 @@
       <!-- Email -->
       <div class="form-group">
         <label for="e-email">Email Address</label>
-        <input
-          type="email"
-          id="e-email"
-          placeholder="you@example.com"
-          required
-        />
+        <input type="email" id="e-email" name="email" placeholder="you@example.com" required />
       </div>
 
       <!-- Age -->
       <div class="form-group">
         <label for="e-age">Your Age</label>
-        <input
-          type="number"
-          id="e-age"
-          placeholder="e.g. 20"
-          min="6"
-          max="70"
-          required
-        />
+        <input type="number" id="e-age" name="age" placeholder="e.g. 20" min="6" max="70" required />
       </div>
 
       <!--
@@ -248,7 +227,7 @@
       -->
       <div class="form-group">
         <label for="e-course">Select Program</label>
-        <select id="e-course" required>
+        <select id="e-course" name="course" required>
           <option value="" disabled selected>Choose a program...</option>
           <option value="beginner">Beginner Guitar Classes</option>
           <option value="advanced">Advanced & Lead Guitar</option>
@@ -270,22 +249,5 @@
     </form>
 
   </div>
-
-  <script>
-    function handleEnroll(e) {
-      e.preventDefault();
-      document.getElementById('enroll-success').style.display = 'block';
-      e.target.reset();
-
-      /*
-        In a real Node.js project, you would send this data to your server:
-        fetch('/api/enroll', {
-          method: 'POST',
-          body: JSON.stringify({ name, phone, email, course })
-        })
-      */
-    }
-  </script>
-
 </body>
 </html>

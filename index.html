@@ -1,28 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-
-  <!--
-    viewport meta tag:
-    This makes the website look correct on mobile phones.
-    Without this, mobile browsers zoom out and show a tiny desktop version.
-  -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>StringsAcademy – Learn Guitar. Play Your Story.</title>
 
-  <!-- Google Fonts: two fonts loaded from the internet -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet" />
+  <!-- Google Fonts (keep this) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
-  <!-- Linking our CSS file. This applies all the styles. -->
-  <link rel="stylesheet" href="style.css" />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind Config: define your custom colors and fonts -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold:     '#c8922a',
+            'gold-light': '#e5b55a',
+            dark:     '#1a1209',
+            'dark-2': '#261c0e',
+            'dark-3': '#321f0f',
+            muted:    '#9e8c72',
+            border:   '#3a2a18',
+          },
+          fontFamily: {
+            heading: ['Playfair Display', 'serif'],
+            body:    ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
 </head>
 
 <body>
+  <style>
+  body {
+    background-color: #1a1209;
+  }
+</style>
 
   <!--
     ============================================================
@@ -33,33 +52,29 @@
     - href="enroll.html" = REDIRECT link (new page)
     ============================================================
   -->
-  <nav class="navbar" id="navbar">
+  <nav id="navbar"
+     class="fixed top-0 left-0 w-full h-[72px] flex items-center
+            justify-between px-[5%] z-[1000] border-b border-transparent
+            transition-all duration-300">
 
-    <!-- Logo -->
-    <div class="nav-logo">
-      Strings<span>Academy</span>
-    </div>
+  <div class="font-heading text-2xl font-bold text-[#f0e8d8]">
+    Strings<span class="text-gold">Academy</span>
+  </div>
 
-    <!-- Navigation Links -->
-    <!--
-      Each link uses href="#sectionid"
-      When clicked, browser finds the element with that id
-      and scrolls to it. No new page is opened.
-    -->
-    <ul class="nav-links">
-      <li><a href="#hero">Home</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+  <ul class="hidden md:flex gap-8">
+    <li><a href="#hero"     class="text-muted hover:text-[#f0e8d8] text-sm font-medium transition-colors">Home</a></li>
+    <li><a href="#services" class="text-muted hover:text-[#f0e8d8] text-sm font-medium transition-colors">Services</a></li>
+    <li><a href="#about"    class="text-muted hover:text-[#f0e8d8] text-sm font-medium transition-colors">About</a></li>
+    <li><a href="#contact"  class="text-muted hover:text-[#f0e8d8] text-sm font-medium transition-colors">Contact</a></li>
+  </ul>
 
-    <!--
-      This is the ONLY redirect link in the navbar.
-      href="enroll.html" opens a completely new page.
-    -->
-    <a href="enroll.html" class="btn btn-enroll">Enroll Now</a>
+  <a href="enroll.html"
+     class="bg-gold text-dark-2 font-bold text-sm px-5 py-2
+            rounded-full hover:bg-gold-light transition-colors">
+    Enroll Now
+  </a>
 
-  </nav>
+</nav>
 
 
   <!--
@@ -70,76 +85,90 @@
     This is the FIRST section the visitor sees (full screen)
     ============================================================
   -->
-  <section id="hero" class="hero">
+  <section id="hero"
+         class="min-h-screen pt-[72px] px-[5%] flex items-center
+                justify-between gap-12 relative overflow-hidden">
 
-    <div class="hero-content">
+  <!-- Background glow -->
+  <div class="absolute top-[10%] left-[-10%] w-[700px] h-[700px] rounded-full pointer-events-none"
+       style="background: radial-gradient(circle, rgba(200,146,42,0.08) 0%, transparent 65%);">
+  </div>
 
-      <!-- Small label above the heading -->
-      <span class="badge">🎸 Chennai's Premier Guitar Academy</span>
+  <!-- Left Content -->
+  <div class="max-w-[580px] relative z-10">
 
-      <!--
-        Main heading (h1):
-        Only ONE h1 per page — it's the most important heading.
-        Used by search engines and screen readers.
-      -->
-      <h1>Learn Guitar.<br /><span class="highlight">Play Your Story.</span></h1>
+    <span class="inline-block bg-gold/10 border border-gold/25
+                 text-gold-light px-4 py-1.5 rounded-full text-xs
+                 font-semibold mb-6 tracking-wide">
+      🎸 Chennai's Premier Guitar Academy
+    </span>
 
-      <!-- Supporting description -->
-      <p class="hero-desc">
-        From your very first chord to performing on stage — StringsAcademy
-        guides every step of your musical journey with expert coaches,
-        flexible timing, and a passion for music.
-      </p>
+    <h1 class="font-heading text-5xl md:text-6xl font-extrabold leading-tight mb-5 text-[#f0e8d8]">
+      Learn Guitar.<br />
+      <span class="text-gold">Play Your Story.</span>
+    </h1>
 
-      <!--
-        TWO buttons to show BOTH behaviors:
-        1. "Enroll Now" → redirects to enroll.html (NEW page)
-        2. "Our Services" → scrolls to #services (SAME page)
-      -->
-      <div class="hero-btns">
-        <a href="enroll.html" class="btn btn-primary">Enroll Now →</a>
-        <a href="#services" class="btn btn-outline">Our Services</a>
-      </div>
+    <p class="text-muted text-lg mb-8 max-w-[480px]">
+      From your very first chord to performing on stage — StringsAcademy
+      guides every step of your musical journey with expert coaches,
+      flexible timing, and a passion for music.
+    </p>
 
-      <!-- Trust indicators -->
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <strong>500+</strong>
-          <span>Students</span>
-        </div>
-        <div class="divider-line"></div>
-        <div class="hero-stat">
-          <strong>10+</strong>
-          <span>Years Experience</span>
-        </div>
-        <div class="divider-line"></div>
-        <div class="hero-stat">
-          <strong>4.9★</strong>
-          <span>Rating</span>
-        </div>
-      </div>
-
+    <div class="flex gap-4 flex-wrap mb-10">
+      <a href="enroll.html"
+         class="inline-block bg-gold text-white font-semibold text-sm
+                px-7 py-3 rounded-full hover:bg-gold-light
+                hover:-translate-y-0.5 transition-all duration-200">
+        Enroll Now →
+      </a>
+      <a href="#services"
+         class="inline-block border border-[#3a2a18] text-[#f0e8d8]
+                text-sm px-7 py-3 rounded-full hover:border-gold
+                hover:text-gold transition-all duration-200">
+        Our Services
+      </a>
     </div>
 
-    <!-- Right side decorative image area -->
-    <div class="hero-image">
-      <div class="guitar-card">
-        <div class="guitar-icon">🎸</div>
-        <div class="guitar-info">
-          <p class="guitar-title">Next Batch Starting</p>
-          <p class="guitar-date">May 1, 2025 · Limited Seats</p>
-        </div>
+    <div class="flex items-center gap-6">
+      <div class="flex flex-col gap-0.5">
+        <strong class="text-2xl font-bold text-gold font-heading">500+</strong>
+        <span class="text-xs text-muted">Students</span>
       </div>
-
-      <div class="note-float note-1">♪</div>
-      <div class="note-float note-2">♫</div>
-      <div class="note-float note-3">♩</div>
-
-      <div class="big-circle"></div>
+      <div class="w-px h-9 bg-[#3a2a18]"></div>
+      <div class="flex flex-col gap-0.5">
+        <strong class="text-2xl font-bold text-gold font-heading">10+</strong>
+        <span class="text-xs text-muted">Years Experience</span>
+      </div>
+      <div class="w-px h-9 bg-[#3a2a18]"></div>
+      <div class="flex flex-col gap-0.5">
+        <strong class="text-2xl font-bold text-gold font-heading">4.9★</strong>
+        <span class="text-xs text-muted">Rating</span>
+      </div>
     </div>
 
-  </section>
+  </div>
 
+  <!-- Right Decorative Visual -->
+  <div class="flex-shrink-0 relative w-[340px] h-[340px] hidden md:flex items-center justify-center">
+
+    <div class="absolute w-[300px] h-[300px] rounded-full border-2 border-[#3a2a18] bg-[#261c0e]"></div>
+
+    <div class="relative z-10 bg-[#261c0e] border border-[#3a2a18]
+                rounded-xl px-5 py-4 flex items-center gap-4 animate-bounce">
+      <div class="text-4xl">🎸</div>
+      <div>
+        <p class="font-semibold text-sm text-[#f0e8d8]">Next Batch Starting</p>
+        <p class="text-xs text-gold mt-0.5">May 1, 2025 · Limited Seats</p>
+      </div>
+    </div>
+
+    <div class="absolute top-[10%] left-[10%] text-gold text-2xl opacity-40">♪</div>
+    <div class="absolute bottom-[15%] right-[5%] text-gold text-2xl opacity-40">♫</div>
+    <div class="absolute top-[70%] left-[5%] text-gold text-2xl opacity-40">♩</div>
+
+  </div>
+
+</section>
 
   <!--
     ============================================================
@@ -149,77 +178,95 @@
     Shows 4 service cards of what the academy offers
     ============================================================
   -->
-  <section id="services" class="services">
+ <section id="services" class="py-24 px-[5%] bg-[#261c0e]">
 
-    <!--
-      Section header: reused across multiple sections.
-      Contains a small label + main heading.
-    -->
-    <div class="section-header">
-      <span class="section-tag">What We Offer</span>
-      <h2>Our Guitar Programs</h2>
-      <p class="section-desc">Choose the program that fits your level and goals</p>
+  <div class="text-center mb-14">
+    <span class="inline-block bg-gold/10 text-gold-light px-4 py-1.5
+                 rounded-full text-xs font-semibold uppercase tracking-widest mb-3">
+      What We Offer
+    </span>
+    <h2 class="font-heading text-4xl font-bold text-[#f0e8d8]">
+      Our Guitar Programs
+    </h2>
+    <p class="text-muted mt-2 text-sm">
+      Choose the program that fits your level and goals
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+    <!-- Card 1 -->
+    <div class="bg-[#1a1209] border border-[#3a2a18] rounded-2xl p-8
+                hover:border-gold hover:-translate-y-1 transition-all duration-300">
+      <div class="text-4xl mb-4">🎵</div>
+      <h3 class="font-heading text-lg font-bold text-[#f0e8d8] mb-2">Beginner Classes</h3>
+      <p class="text-muted text-sm leading-relaxed mb-4">
+        Start from zero. Learn chords, strumming patterns, basic music theory,
+        and your first songs in just 4 weeks.
+      </p>
+      <ul class="flex flex-col gap-1.5">
+        <li class="text-muted text-xs">✓ No prior knowledge needed</li>
+        <li class="text-muted text-xs">✓ Weekend & weekday batches</li>
+        <li class="text-muted text-xs">✓ Guitar provided in class</li>
+      </ul>
     </div>
 
-    <!--
-      CSS Grid: 4 cards in a row on desktop
-      Automatically adjusts to 2 or 1 column on smaller screens
-    -->
-    <div class="services-grid">
-
-      <!-- Service Card 1 -->
-      <div class="service-card">
-        <div class="service-icon">🎵</div>
-        <h3>Beginner Classes</h3>
-        <p>Start from zero. Learn chords, strumming patterns, basic music theory, and your first songs in just 4 weeks.
-        </p>
-        <ul class="service-features">
-          <li>✓ No prior knowledge needed</li>
-          <li>✓ Weekend & weekday batches</li>
-          <li>✓ Guitar provided in class</li>
-        </ul>
-      </div>
-
-      <!-- Service Card 2 -->
-      <div class="service-card featured">
-        <span class="popular-badge">Most Popular</span>
-        <div class="service-icon">🎸</div>
-        <h3>Advanced Training</h3>
-        <p>Master lead guitar, scales, improvisation, fingerpicking styles, and complex chord progressions.</p>
-        <ul class="service-features">
-          <li>✓ Intermediate level onwards</li>
-          <li>✓ Genre-specific training</li>
-          <li>✓ Stage performance prep</li>
-        </ul>
-      </div>
-
-      <!-- Service Card 3 -->
-      <div class="service-card">
-        <div class="service-icon">💻</div>
-        <h3>Online Live Sessions</h3>
-        <p>Learn from the comfort of your home with live interactive classes. Same quality, total flexibility.</p>
-        <ul class="service-features">
-          <li>✓ Zoom-based live sessions</li>
-          <li>✓ Recorded for revision</li>
-          <li>✓ All levels welcome</li>
-        </ul>
-      </div>
-
-      <!-- Service Card 4 -->
-      <div class="service-card">
-        <div class="service-icon">🎤</div>
-        <h3>One-on-One Coaching</h3>
-        <p>Private sessions with your dedicated coach. Personalised curriculum, faster progress, total focus on you.</p>
-        <ul class="service-features">
-          <li>✓ Flexible scheduling</li>
-          <li>✓ Custom lesson plan</li>
-          <li>✓ Monthly progress review</li>
-        </ul>
-      </div>
-
+    <!-- Card 2 : Featured -->
+    <div class="relative bg-[#321f0f] border border-gold rounded-2xl p-8
+                hover:-translate-y-1 transition-all duration-300">
+      <span class="absolute -top-3 left-1/2 -translate-x-1/2
+                   bg-gold text-[#1a1209] text-xs font-bold
+                   px-4 py-1 rounded-full whitespace-nowrap">
+        Most Popular
+      </span>
+      <div class="text-4xl mb-4">🎸</div>
+      <h3 class="font-heading text-lg font-bold text-[#f0e8d8] mb-2">Advanced Training</h3>
+      <p class="text-muted text-sm leading-relaxed mb-4">
+        Master lead guitar, scales, improvisation, fingerpicking styles,
+        and complex chord progressions.
+      </p>
+      <ul class="flex flex-col gap-1.5">
+        <li class="text-gold-light text-xs">✓ Intermediate level onwards</li>
+        <li class="text-gold-light text-xs">✓ Genre-specific training</li>
+        <li class="text-gold-light text-xs">✓ Stage performance prep</li>
+      </ul>
     </div>
 
-  </section>
+    <!-- Card 3 -->
+    <div class="bg-[#1a1209] border border-[#3a2a18] rounded-2xl p-8
+                hover:border-gold hover:-translate-y-1 transition-all duration-300">
+      <div class="text-4xl mb-4">💻</div>
+      <h3 class="font-heading text-lg font-bold text-[#f0e8d8] mb-2">Online Live Sessions</h3>
+      <p class="text-muted text-sm leading-relaxed mb-4">
+        Learn from the comfort of your home with live interactive classes.
+        Same quality, total flexibility.
+      </p>
+      <ul class="flex flex-col gap-1.5">
+        <li class="text-muted text-xs">✓ Zoom-based live sessions</li>
+        <li class="text-muted text-xs">✓ Recorded for revision</li>
+        <li class="text-muted text-xs">✓ All levels welcome</li>
+      </ul>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="bg-[#1a1209] border border-[#3a2a18] rounded-2xl p-8
+                hover:border-gold hover:-translate-y-1 transition-all duration-300">
+      <div class="text-4xl mb-4">🎤</div>
+      <h3 class="font-heading text-lg font-bold text-[#f0e8d8] mb-2">One-on-One Coaching</h3>
+      <p class="text-muted text-sm leading-relaxed mb-4">
+        Private sessions with your dedicated coach. Personalised curriculum,
+        faster progress, total focus on you.
+      </p>
+      <ul class="flex flex-col gap-1.5">
+        <li class="text-muted text-xs">✓ Flexible scheduling</li>
+        <li class="text-muted text-xs">✓ Custom lesson plan</li>
+        <li class="text-muted text-xs">✓ Monthly progress review</li>
+      </ul>
+    </div>
+
+  </div>
+
+</section>
 
 
   <!--
@@ -229,56 +276,77 @@
     id="about" → matched by <a href="#about"> in navbar
     ============================================================
   -->
-  <section id="about" class="about">
+  <section id="about" class="py-24 px-[5%] flex items-center gap-20 flex-wrap">
 
-    <!-- Left: decorative visual -->
-    <div class="about-visual">
-      <div class="about-img-box">
-        <div class="about-icon-big">🎸</div>
-        <p class="about-img-caption">Est. 2014 · Chennai</p>
+  <!-- Left: Decorative Visual -->
+  <div class="flex-1 min-w-[260px] flex justify-center">
+    <div class="w-[260px] h-[300px] bg-[#261c0e] border border-[#3a2a18]
+                rounded-2xl flex flex-col items-center justify-center gap-4">
+      <div class="text-8xl">🎸</div>
+      <p class="text-gold text-sm font-semibold">Est. 2014 · Chennai</p>
+    </div>
+  </div>
+
+  <!-- Right: Text Content -->
+  <div class="flex-[1.5] min-w-[280px]">
+
+    <span class="inline-block bg-gold/10 text-gold-light px-4 py-1.5
+                 rounded-full text-xs font-semibold uppercase
+                 tracking-widest mb-4">
+      Our Story
+    </span>
+
+    <h2 class="font-heading text-4xl font-bold text-[#f0e8d8] mt-2 mb-5 leading-tight">
+      Born from a Love<br />for Music
+    </h2>
+
+    <p class="text-muted text-sm leading-relaxed mb-4">
+      StringsAcademy was founded in 2014 by <strong class="text-[#f0e8d8]">Arjun Sharma</strong>, a
+      professional guitarist with over 15 years of stage experience. What started
+      as weekend classes in a small room in T. Nagar has grown into Chennai's
+      most trusted guitar learning institute.
+    </p>
+
+    <p class="text-muted text-sm leading-relaxed mb-8">
+      We believe music is for everyone — not just the naturally talented. Our
+      teaching method combines structured theory with practical playing, so
+      students see real progress fast.
+    </p>
+
+    <!-- Stats Row -->
+    <div class="flex gap-4 flex-wrap mb-8">
+
+      <div class="flex-1 min-w-[90px] bg-[#261c0e] border border-[#3a2a18]
+                  rounded-xl px-6 py-5 text-center">
+        <h3 class="font-heading text-3xl font-bold text-gold mb-1">500+</h3>
+        <p class="text-muted text-xs">Students Trained</p>
       </div>
+
+      <div class="flex-1 min-w-[90px] bg-[#261c0e] border border-[#3a2a18]
+                  rounded-xl px-6 py-5 text-center">
+        <h3 class="font-heading text-3xl font-bold text-gold mb-1">10+</h3>
+        <p class="text-muted text-xs">Years in Chennai</p>
+      </div>
+
+      <div class="flex-1 min-w-[90px] bg-[#261c0e] border border-[#3a2a18]
+                  rounded-xl px-6 py-5 text-center">
+        <h3 class="font-heading text-3xl font-bold text-gold mb-1">8</h3>
+        <p class="text-muted text-xs">Expert Coaches</p>
+      </div>
+
     </div>
 
-    <!-- Right: text content -->
-    <div class="about-text">
+    <!-- Button -->
+    <a href="enroll.html"
+       class="inline-block bg-gold text-white font-semibold text-sm
+              px-7 py-3 rounded-full hover:bg-gold-light
+              hover:-translate-y-0.5 transition-all duration-200">
+      Join Our Academy →
+    </a>
 
-      <span class="section-tag">Our Story</span>
-      <h2>Born from a Love<br />for Music</h2>
+  </div>
 
-      <p>
-        StringsAcademy was founded in 2014 by <strong>Arjun Sharma</strong>, a
-        professional guitarist with over 15 years of stage experience. What started
-        as weekend classes in a small room in T. Nagar has grown into Chennai's
-        most trusted guitar learning institute.
-      </p>
-
-      <p>
-        We believe music is for everyone — not just the naturally talented. Our
-        teaching method combines structured theory with practical playing, so
-        students see real progress fast.
-      </p>
-
-      <!-- Stats row -->
-      <div class="about-stats">
-        <div class="stat-box">
-          <h3>500+</h3>
-          <p>Students Trained</p>
-        </div>
-        <div class="stat-box">
-          <h3>10+</h3>
-          <p>Years in Chennai</p>
-        </div>
-        <div class="stat-box">
-          <h3>8</h3>
-          <p>Expert Coaches</p>
-        </div>
-      </div>
-
-      <a href="enroll.html" class="btn btn-primary">Join Our Academy →</a>
-
-    </div>
-
-  </section>
+</section>
 
 
   <!--
@@ -289,110 +357,161 @@
     Simple form with Name, Phone, Email, Message
     ============================================================
   -->
-  <section id="contact" class="contact">
+  <section id="contact" class="py-24 px-[5%] bg-[#261c0e]">
 
-    <div class="section-header">
-      <span class="section-tag">Get In Touch</span>
-      <h2>Have Questions?</h2>
-      <p class="section-desc">Fill in the form and we'll get back to you within 24 hours</p>
+  <!-- Section Header -->
+  <div class="text-center mb-14">
+    <span class="inline-block bg-gold/10 text-gold-light px-4 py-1.5
+                 rounded-full text-xs font-semibold uppercase
+                 tracking-widest mb-3">
+      Get In Touch
+    </span>
+    <h2 class="font-heading text-4xl font-bold text-[#f0e8d8]">
+      Have Questions?
+    </h2>
+    <p class="text-muted mt-2 text-sm">
+      Fill in the form and we'll get back to you within 24 hours
+    </p>
+  </div>
+
+  <!-- Content Wrapper: Info + Form side by side -->
+  <div class="flex gap-16 flex-wrap max-w-[1000px] mx-auto">
+
+    <!-- Left: Contact Info -->
+    <div class="flex-1 min-w-[240px] flex flex-col gap-7">
+
+      <div class="flex gap-4 items-start">
+        <span class="text-xl mt-0.5">📍</span>
+        <div>
+          <strong class="block text-sm text-[#f0e8d8] mb-1">Address</strong>
+          <p class="text-muted text-sm leading-relaxed">
+            12, Music Street, T. Nagar,<br />Chennai – 600017
+          </p>
+        </div>
+      </div>
+
+      <div class="flex gap-4 items-start">
+        <span class="text-xl mt-0.5">📞</span>
+        <div>
+          <strong class="block text-sm text-[#f0e8d8] mb-1">Phone</strong>
+          <p class="text-muted text-sm">+91 98765 43210</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4 items-start">
+        <span class="text-xl mt-0.5">✉️</span>
+        <div>
+          <strong class="block text-sm text-[#f0e8d8] mb-1">Email</strong>
+          <p class="text-muted text-sm">hello@stringsacademy.in</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4 items-start">
+        <span class="text-xl mt-0.5">🕐</span>
+        <div>
+          <strong class="block text-sm text-[#f0e8d8] mb-1">Hours</strong>
+          <p class="text-muted text-sm leading-relaxed">
+            Mon–Sat: 8AM – 8PM<br />Sunday: 9AM – 1PM
+          </p>
+        </div>
+      </div>
+
     </div>
 
-    <div class="contact-wrapper">
+    <!-- Right: Contact Form (Formspree connected) -->
+    <form class="flex-[1.5] min-w-[280px]"
+          action="https://formspree.io/f/xykbvwzq"
+          method="POST">
 
-      <!-- Left: contact details -->
-      <div class="contact-info">
+      <input type="hidden" name="_subject" value="New StringsAcademy Contact" />
 
-        <div class="info-item">
-          <span class="info-icon">📍</span>
-          <div>
-            <strong>Address</strong>
-            <p>12, Music Street, T. Nagar,<br />Chennai – 600017</p>
-          </div>
+      <!-- Name + Phone side by side -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+
+        <div class="flex flex-col gap-1.5">
+          <label for="c-name"
+                 class="text-xs font-semibold text-muted">
+            Full Name
+          </label>
+          <input type="text"
+                 name="name"
+                 id="c-name"
+                 placeholder="Your full name"
+                 required
+                 class="bg-[#1a1209] border border-[#3a2a18] rounded-xl
+                        px-4 py-3 text-[#f0e8d8] text-sm
+                        placeholder-[#4a3520] focus:outline-none
+                        focus:border-gold transition-colors" />
         </div>
 
-        <div class="info-item">
-          <span class="info-icon">📞</span>
-          <div>
-            <strong>Phone</strong>
-            <p>+91 98765 43210</p>
-          </div>
-        </div>
-
-        <div class="info-item">
-          <span class="info-icon">✉️</span>
-          <div>
-            <strong>Email</strong>
-            <p>hello@stringsacademy.in</p>
-          </div>
-        </div>
-
-        <div class="info-item">
-          <span class="info-icon">🕐</span>
-          <div>
-            <strong>Hours</strong>
-            <p>Mon–Sat: 8AM – 8PM<br />Sunday: 9AM – 1PM</p>
-          </div>
+        <div class="flex flex-col gap-1.5">
+          <label for="c-phone"
+                 class="text-xs font-semibold text-muted">
+            Phone Number
+          </label>
+          <input type="tel"
+                 name="phone"
+                 id="c-phone"
+                 pattern="[0-9]{10}"
+                 placeholder="Enter 10-digit number"
+                 required
+                 class="bg-[#1a1209] border border-[#3a2a18] rounded-xl
+                        px-4 py-3 text-[#f0e8d8] text-sm
+                        placeholder-[#4a3520] focus:outline-none
+                        focus:border-gold transition-colors" />
         </div>
 
       </div>
 
-      <!--
-        Right: Contact form
-      -->
-     <form class="contact-form" action="https://formspree.io/f/xykbvwzq" method="POST">
-        <input type="hidden" name="_subject" value="New StringsAcademy Contact" />
-        <!--
-          Two inputs side by side using CSS Grid.
-          type="text" for name, type="tel" for phone number.
-        -->
-        <div class="form-row">
+      <!-- Email -->
+      <div class="flex flex-col gap-1.5 mb-4">
+        <label for="c-email"
+               class="text-xs font-semibold text-muted">
+          Email Address
+        </label>
+        <input type="email"
+               name="email"
+               id="c-email"
+               placeholder="you@example.com"
+               required
+               class="bg-[#1a1209] border border-[#3a2a18] rounded-xl
+                      px-4 py-3 text-[#f0e8d8] text-sm
+                      placeholder-[#4a3520] focus:outline-none
+                      focus:border-gold transition-colors" />
+      </div>
 
-          <div class="form-group">
-            <!--
-              label: describes the input to the user
-              for="name" connects this label to input id="name"
-              When you click the label, the input gets focused.
-            -->
-            <label for="c-name">Full Name</label>
-            <input type="text" name="name" id="c-name" placeholder="Your full name" required />
-          </div>
+      <!-- Message -->
+      <div class="flex flex-col gap-1.5 mb-6">
+        <label for="c-message"
+               class="text-xs font-semibold text-muted">
+          Your Message
+        </label>
+        <textarea name="message"
+                  id="c-message"
+                  rows="5"
+                  placeholder="Ask about batch timings, fees, or anything else..."
+                  required
+                  class="bg-[#1a1209] border border-[#3a2a18] rounded-xl
+                         px-4 py-3 text-[#f0e8d8] text-sm
+                         placeholder-[#4a3520] focus:outline-none
+                         focus:border-gold transition-colors resize-y">
+        </textarea>
+      </div>
 
-          <div class="form-group">
-            <label for="c-phone">Phone Number</label>
-            <input type="tel" name="phone" id="c-phone" pattern="[0-9]{10}" placeholder="Enter 10-digit number"
-              required />
-          </div>
+      <!-- Submit Button -->
+      <button type="submit"
+              class="inline-block bg-gold text-white font-semibold text-sm
+                     px-7 py-3 rounded-full hover:bg-gold-light
+                     hover:-translate-y-0.5 transition-all duration-200
+                     cursor-pointer">
+        Send Message →
+      </button>
 
-        </div>
+    </form>
 
-        <div class="form-group">
-          <label for="c-email">Email Address</label>
-          <input type="email" name="email" id="c-email" placeholder="you@example.com" required />
-        </div>
+  </div>
 
-        <div class="form-group">
-          <label for="c-message">Your Message</label>
-          <!--
-            textarea: multi-line text input
-            rows="5" sets the default height
-            resize: vertical in CSS lets user resize only vertically
-          -->
-          <textarea name="message" id="c-message" rows="5"
-            placeholder="Ask about batch timings, fees, or anything else..." required></textarea>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Send Message →</button>
-
-        <!-- Hidden success message, shown by JS after submit -->
-        <p id="contact-success" class="success-msg" style="display:none;">
-          ✅ Message sent! We'll get back to you within 24 hours.
-        </p>
-
-      </form>
-
-    </div>
-
-  </section>
+</section>
 
 
   <!--
@@ -402,14 +521,23 @@
     Simple footer at the bottom of the page.
     ============================================================
   -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <p class="footer-logo">Strings<span>Academy</span></p>
-      <p class="footer-copy">© 2025 StringsAcademy, Chennai. All rights reserved.</p>
-      <p class="footer-credit">Built by Rushwanth K</p>
-    </div>
-  </footer>
+<footer class="bg-[#1a1209] border-t border-[#3a2a18] py-10 px-[5%] text-center">
+  <div class="flex flex-col items-center gap-2">
 
+    <p class="font-heading text-xl font-bold text-[#f0e8d8]">
+      Strings<span class="text-gold">Academy</span>
+    </p>
+
+    <p class="text-muted text-sm">
+      © 2026 StringsAcademy, Chennai. All rights reserved.
+    </p>
+
+    <p class="text-[#3a2a18] text-xs">
+      Built by Rushwanth K
+    </p>
+
+  </div>
+</footer>
 
   <!--
     ============================================================
@@ -456,14 +584,16 @@
       we add the class "scrolled" to the navbar.
       In CSS, .navbar.scrolled adds a background + shadow.
     */
-    window.addEventListener('scroll', function () {
-      var navbar = document.getElementById('navbar');
-      if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-    });
+   window.addEventListener('scroll', function() {
+  var navbar = document.getElementById('navbar');
+  if (window.scrollY > 50) {
+    navbar.classList.add('bg-[#1a1209]', 'border-[#3a2a18]', 'backdrop-blur-md');
+    navbar.classList.remove('border-transparent');
+  } else {
+    navbar.classList.remove('bg-[#1a1209]', 'border-[#3a2a18]', 'backdrop-blur-md');
+    navbar.classList.add('border-transparent');
+  }
+});
   </script>
 
 </body>

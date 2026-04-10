@@ -28,9 +28,12 @@
           fontFamily: {
             heading: ['Playfair Display', 'serif'],
             body:    ['Inter', 'sans-serif'],
+              scrollMargin: {
+        'nav': '72px',
           }
         }
       }
+    }
     }
   </script>
 
@@ -73,7 +76,7 @@
             rounded-full hover:bg-gold-light transition-colors">
     Enroll Now
   </a>
-
+<li><a href="#guitars" class="text-muted hover:text-[#f0e8d8] text-sm font-medium transition-colors">Guitars</a></li>
 </nav>
 
 
@@ -86,7 +89,7 @@
     ============================================================
   -->
   <section id="hero"
-         class="min-h-screen pt-[72px] px-[5%] flex items-center
+         class="scroll-mt-[72px] min-h-screen pt-[72px]  px-[5%] flex items-center
                 justify-between gap-12 relative overflow-hidden">
 
   <!-- Background glow -->
@@ -148,25 +151,55 @@
 
   </div>
 
-  <!-- Right Decorative Visual -->
-  <div class="flex-shrink-0 relative w-[340px] h-[340px] hidden md:flex items-center justify-center">
+  <!-- Right: Real Image -->
+<div class="flex-shrink-0 hidden md:block relative">
 
-    <div class="absolute w-[300px] h-[300px] rounded-full border-2 border-[#3a2a18] bg-[#261c0e]"></div>
+  <!-- Main image -->
+  <div class="w-[420px] h-[500px] rounded-2xl overflow-hidden
+              border border-[#3a2a18] relative">
+    <img src="images used/hero section image.jpeg"
+         alt="Guitarist playing guitar"
+         class="w-full h-full object-cover" />
 
-    <div class="relative z-10 bg-[#261c0e] border border-[#3a2a18]
-                rounded-xl px-5 py-4 flex items-center gap-4 animate-bounce">
-      <div class="text-4xl">🎸</div>
-      <div>
-        <p class="font-semibold text-sm text-[#f0e8d8]">Next Batch Starting</p>
-        <p class="text-xs text-gold mt-0.5">May 1, 2025 · Limited Seats</p>
-      </div>
+    <!-- Dark overlay at bottom for card readability -->
+    <div class="absolute bottom-0 left-0 right-0 h-32
+                bg-gradient-to-t from-[#1a1209] to-transparent">
     </div>
-
-    <div class="absolute top-[10%] left-[10%] text-gold text-2xl opacity-40">♪</div>
-    <div class="absolute bottom-[15%] right-[5%] text-gold text-2xl opacity-40">♫</div>
-    <div class="absolute top-[70%] left-[5%] text-gold text-2xl opacity-40">♩</div>
-
   </div>
+
+  <!-- Floating batch card — sits on top of image -->
+  <div class="absolute bottom-6 left-6 right-6
+              bg-[#1a1209]/90 backdrop-blur-sm
+              border border-[#3a2a18] rounded-xl
+              px-5 py-4 flex items-center gap-4">
+    <div class="w-10 h-10 bg-gold/20 rounded-full flex items-center
+                justify-center flex-shrink-0">
+      <span class="text-gold text-lg">🎸</span>
+    </div>
+    <div>
+      <p class="font-semibold text-sm text-[#f0e8d8]">Next Batch Starting</p>
+      <p class="text-xs text-gold mt-0.5">May 1, 2025 · Limited Seats</p>
+    </div>
+    <span class="ml-auto bg-green-900/40 text-green-400 text-xs
+                 font-semibold px-2 py-1 rounded-full border
+                 border-green-800 whitespace-nowrap">
+      Seats Left: 5
+    </span>
+  </div>
+
+  <!-- Floating note decorations -->
+  <div class="absolute -top-4 -right-4 w-14 h-14 bg-gold/10
+              border border-gold/20 rounded-full flex items-center
+              justify-center text-gold text-xl">
+    ♪
+  </div>
+  <div class="absolute top-1/2 -left-4 w-10 h-10 bg-gold/10
+              border border-gold/20 rounded-full flex items-center
+              justify-center text-gold text-sm">
+    ♫
+  </div>
+
+</div>
 
 </section>
 
@@ -268,6 +301,210 @@
 
 </section>
 
+<!-- ============================================================
+     GUITAR TYPES SECTION
+     Place this RIGHT AFTER the services </section> closing tag
+     ============================================================ -->
+<section id="guitars" class="scroll-mt-[72px] py-24 px-[5%] bg-[#0f0a05] relative">
+
+  <!-- Top gold divider line -->
+  <div class="w-full h-px bg-gradient-to-r from-transparent via-gold to-transparent mb-16"></div>
+
+  <!-- Section Header -->
+  <div class="text-center mb-14">
+    <span class="inline-block bg-gold/10 text-gold-light px-4 py-1.5
+                 rounded-full text-xs font-semibold uppercase
+                 tracking-widest mb-3">
+      Our Specialisation
+    </span>
+    <h2 class="font-heading text-4xl md:text-5xl font-bold text-[#f0e8d8]">
+      Choose Your Guitar Style
+    </h2>
+    <p class="text-muted mt-3 text-sm max-w-[480px] mx-auto">
+      We teach all three — find the one that matches your vibe,
+      and we'll take you from zero to stage-ready.
+    </p>
+  </div>
+
+  <!-- 3 Guitar Cards -->
+  <div class="flex flex-col gap-6 max-w-[900px] mx-auto">
+
+    <!-- Card 1: Acoustic Guitar -->
+    <div class="group flex flex-col sm:flex-row items-center gap-8
+                bg-[#1a1209] border border-[#3a2a18] rounded-2xl p-8
+                hover:border-gold transition-all duration-300">
+
+      <!-- Image -->
+      <div class="flex-shrink-0 w-full sm:w-[200px] h-[180px] rounded-xl overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=400&q=80"
+             alt="Acoustic Guitar"
+             class="w-full h-full object-cover group-hover:scale-105
+                    transition-transform duration-500" />
+      </div>
+
+      <!-- Content -->
+      <div class="flex-1 text-center sm:text-left">
+
+        <div class="flex items-center gap-3 justify-center sm:justify-start mb-3">
+          <h3 class="font-heading text-2xl font-bold text-[#f0e8d8]">
+            Acoustic Guitar
+          </h3>
+          <!-- Difficulty badge -->
+          <span class="bg-green-900/40 text-green-400 text-xs
+                       font-semibold px-3 py-1 rounded-full border
+                       border-green-800">
+            Beginner Friendly
+          </span>
+        </div>
+
+        <p class="text-muted text-sm leading-relaxed mb-4">
+          The perfect starting point. Acoustic guitar builds your finger strength,
+          rhythm, and music fundamentals — no amplifier needed. Ideal for folk,
+          pop, and Bollywood styles.
+        </p>
+
+        <div class="flex flex-wrap gap-2 justify-center sm:justify-start">
+          <span class="bg-[#261c0e] border border-[#3a2a18] text-muted
+                       text-xs px-3 py-1 rounded-full">🎵 Folk & Pop</span>
+          <span class="bg-[#261c0e] border border-[#3a2a18] text-muted
+                       text-xs px-3 py-1 rounded-full">🎵 Bollywood</span>
+          <span class="bg-[#261c0e] border border-[#3a2a18] text-muted
+                       text-xs px-3 py-1 rounded-full">🎵 Fingerpicking</span>
+        </div>
+
+      </div>
+
+      <!-- Arrow -->
+      <div class="hidden sm:flex text-gold text-2xl opacity-0
+                  group-hover:opacity-100 transition-opacity duration-300">
+        →
+      </div>
+
+    </div>
+
+
+    <!-- Card 2: Classical Guitar -->
+    <div class="group flex flex-col sm:flex-row items-center gap-8
+                bg-[#1a1209] border border-[#3a2a18] rounded-2xl p-8
+                hover:border-gold transition-all duration-300">
+
+      <!-- Image -->
+      <div class="flex-shrink-0 w-full sm:w-[200px] h-[180px] rounded-xl overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1525201548942-d8732f6617a0?w=400&q=80"
+             alt="Classical Guitar"
+             class="w-full h-full object-cover group-hover:scale-105
+                    transition-transform duration-500" />
+      </div>
+
+      <!-- Content -->
+      <div class="flex-1 text-center sm:text-left">
+
+        <div class="flex items-center gap-3 justify-center sm:justify-start mb-3">
+          <h3 class="font-heading text-2xl font-bold text-[#f0e8d8]">
+            Classical Guitar
+          </h3>
+          <span class="bg-blue-900/40 text-blue-400 text-xs
+                       font-semibold px-3 py-1 rounded-full border
+                       border-blue-800">
+            All Levels
+          </span>
+        </div>
+
+        <p class="text-muted text-sm leading-relaxed mb-4">
+          Rooted in tradition, classical guitar teaches proper technique,
+          music reading, and fingerstyle playing. A strong foundation
+          for any guitarist serious about music theory.
+        </p>
+
+        <div class="flex flex-wrap gap-2 justify-center sm:justify-start">
+          <span class="bg-[#261c0e] border border-[#3a2a18] text-muted
+                       text-xs px-3 py-1 rounded-full">🎵 Classical</span>
+          <span class="bg-[#261c0e] border border-[#3a2a18] text-muted
+                       text-xs px-3 py-1 rounded-full">🎵 Music Theory</span>
+          <span class="bg-[#261c0e] border border-[#3a2a18] text-muted
+                       text-xs px-3 py-1 rounded-full">🎵 Fingerstyle</span>
+        </div>
+
+      </div>
+
+      <!-- Arrow -->
+      <div class="hidden sm:flex text-gold text-2xl opacity-0
+                  group-hover:opacity-100 transition-opacity duration-300">
+        →
+      </div>
+
+    </div>
+
+
+    <!-- Card 3: Electric Guitar -->
+    <div class="group flex flex-col sm:flex-row items-center gap-8
+                bg-[#1a1209] border border-[#3a2a18] rounded-2xl p-8
+                hover:border-gold transition-all duration-300">
+
+      <!-- Image -->
+      <div class="flex-shrink-0 w-full sm:w-[200px] h-[180px] rounded-xl overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=400&q=80"
+             alt="Electric Guitar"
+             class="w-full h-full object-cover group-hover:scale-105
+                    transition-transform duration-500" />
+      </div>
+
+      <!-- Content -->
+      <div class="flex-1 text-center sm:text-left">
+
+        <div class="flex items-center gap-3 justify-center sm:justify-start mb-3">
+          <h3 class="font-heading text-2xl font-bold text-[#f0e8d8]">
+            Electric Guitar
+          </h3>
+          <span class="bg-orange-900/40 text-orange-400 text-xs
+                       font-semibold px-3 py-1 rounded-full border
+                       border-orange-800">
+            Intermediate
+          </span>
+        </div>
+
+        <p class="text-muted text-sm leading-relaxed mb-4">
+          Turn up the volume. Electric guitar opens the door to rock,
+          metal, blues, and lead playing. Learn riffs, solos, and
+          effects that make crowds go wild.
+        </p>
+
+        <div class="flex flex-wrap gap-2 justify-center sm:justify-start">
+          <span class="bg-[#261c0e] border border-[#3a2a18] text-muted
+                       text-xs px-3 py-1 rounded-full">🎵 Rock & Metal</span>
+          <span class="bg-[#261c0e] border border-[#3a2a18] text-muted
+                       text-xs px-3 py-1 rounded-full">🎵 Blues</span>
+          <span class="bg-[#261c0e] border border-[#3a2a18] text-muted
+                       text-xs px-3 py-1 rounded-full">🎵 Lead Guitar</span>
+        </div>
+
+      </div>
+
+      <!-- Arrow -->
+      <div class="hidden sm:flex text-gold text-2xl opacity-0
+                  group-hover:opacity-100 transition-opacity duration-300">
+        →
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Bottom CTA -->
+  <div class="text-center mt-14">
+    <p class="text-muted text-sm mb-4">
+      Not sure which one to pick? Our coaches will guide you.
+    </p>
+    <a href="enroll.html"
+       class="inline-block bg-gold text-white font-semibold text-sm
+              px-8 py-3 rounded-full hover:bg-gold-light
+              hover:-translate-y-0.5 transition-all duration-200">
+      Talk to a Coach →
+    </a>
+  </div>
+
+</section>
+
 
   <!--
     ============================================================
@@ -276,16 +513,31 @@
     id="about" → matched by <a href="#about"> in navbar
     ============================================================
   -->
-  <section id="about" class="py-24 px-[5%] flex items-center gap-20 flex-wrap">
+  <section id="about" class="scroll-mt-[72px] py-24 px-[5%] flex items-center gap-20 flex-wrap bg-[#1a1209]">
 
-  <!-- Left: Decorative Visual -->
-  <div class="flex-1 min-w-[260px] flex justify-center">
-    <div class="w-[260px] h-[300px] bg-[#261c0e] border border-[#3a2a18]
-                rounded-2xl flex flex-col items-center justify-center gap-4">
-      <div class="text-8xl">🎸</div>
-      <p class="text-gold text-sm font-semibold">Est. 2014 · Chennai</p>
+  <!-- Left: Real Image -->
+<div class="flex-1 min-w-[260px] flex justify-center">
+  <div class="relative w-[280px] h-[340px] rounded-2xl overflow-hidden
+              border border-[#3a2a18]">
+
+    <!-- Real guitar image from Unsplash -->
+    <img src="https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=600&q=80"
+         alt="Guitar Academy"
+         class="w-full h-full object-cover" />
+
+    <!-- Dark overlay -->
+    <div class="absolute inset-0 bg-[#1a1209]/40"></div>
+
+    <!-- Est. badge on image -->
+    <div class="absolute bottom-5 left-5 right-5
+                bg-[#1a1209]/80 backdrop-blur-sm
+                border border-[#3a2a18] rounded-xl px-4 py-3">
+      <p class="text-gold font-semibold text-sm">🎸 Est. 2014</p>
+      <p class="text-muted text-xs mt-0.5">T. Nagar, Chennai</p>
     </div>
+
   </div>
+</div>
 
   <!-- Right: Text Content -->
   <div class="flex-[1.5] min-w-[280px]">
@@ -357,7 +609,7 @@
     Simple form with Name, Phone, Email, Message
     ============================================================
   -->
-  <section id="contact" class="py-24 px-[5%] bg-[#261c0e]">
+  <section id="contact" class="scroll-mt-[72px] py-24 px-[5%] bg-[#261c0e]">
 
   <!-- Section Header -->
   <div class="text-center mb-14">
